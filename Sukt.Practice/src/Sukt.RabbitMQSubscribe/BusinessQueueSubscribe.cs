@@ -5,23 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sukt.RabbitMQSubscribe
 {
-    /// <summary>
-    /// 死信队列测试消费者
-    /// </summary>
-    public class DeadLetterSubscribe
+    public class BusinessQueueSubscribe
     {
         /// <summary>
-        /// 消息消费者
+        /// 业务消息消费者
         /// </summary>
         /// <returns></returns>
         public static void Subscribe()
         {
-            Console.WriteLine($"业务消息成为死信之后死信队列消费者");
+            Console.WriteLine($"业务消息消费者启动");
             //创建连接工厂
             var factory = new ConnectionFactory
             {
@@ -38,11 +34,19 @@ namespace Sukt.RabbitMQSubscribe
             Recipient.Received += (ch, ea) =>
             {
                 var RecipientMsg = Encoding.UTF8.GetString(ea.Body.ToArray());
-                Console.WriteLine($"死信队列收到消息并处理完成：{RecipientMsg}");
-                // 确认该消息已被处理
-                channel.BasicAck(ea.DeliveryTag, false);
+                if (RecipientMsg.Contains("你是对的"))//如果包含条件则进入死信交换队列
+                {
+                    Console.WriteLine("消息投递到死信队列：");
+                    channel.BasicNack(ea.DeliveryTag, false, false);
+                }
+                else
+                {
+                    // 确认该消息已被处理
+                    Console.WriteLine($"业务队列收到消息并处理：{RecipientMsg}");
+                    channel.BasicAck(ea.DeliveryTag, false);
+                }
             };
-            channel.BasicConsume(RabbitMQExchangeConstans.DeadLetterQueueName, false, Recipient);
+            channel.BasicConsume(RabbitMQExchangeConstans.BusinessQueueName, false, Recipient);
             Console.WriteLine("后台处理方法已启动");
             while (true)
             {
