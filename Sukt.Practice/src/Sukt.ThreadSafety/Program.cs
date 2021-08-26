@@ -24,13 +24,11 @@ namespace Sukt.ThreadSafety
             //continuation
             // Task.WhenAll().ContinueWith(o=>o.)
             List<Task> list = new List<Task>();
-            for (int i = 0; i < 20; i++)
+            for (int a = 0; a < 20; a++)
             {
                 list.Add(Task.Run(()=> {
 
                     Add(); Sum();
-
-
                 }));
                 
             }
@@ -39,19 +37,17 @@ namespace Sukt.ThreadSafety
         }
 
  
-        public static  Task Add()
+        public static void Add()
         {
             //使用原子性  Interlocked来操作一个数字的  ++或者--
             Interlocked.Increment(ref i);
-            Console.WriteLine(i);
-            return Task.CompletedTask;
+            Console.WriteLine($"执行了++{i}");
 
         }
-        public static  Task Sum()
+        public static void Sum()
         {
             Interlocked.Decrement(ref i);
-            Console.WriteLine(i);
-            return Task.CompletedTask;
+            Console.WriteLine($"执行了--{i}");
          
         }
     }
