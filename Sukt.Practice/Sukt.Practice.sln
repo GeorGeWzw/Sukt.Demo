@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sukt.RabbitMQSubscribe", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sukt.Common", "src\Sukt.Common\Sukt.Common.csproj", "{8DF8382F-C36F-42B7-89C4-0C6B8D088FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukt.NBomber", "src\Sukt.NBomber\Sukt.NBomber.csproj", "{915C0752-4A0B-4B35-A612-4CF45FD6411E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sukt.NBomber", "src\Sukt.NBomber\Sukt.NBomber.csproj", "{915C0752-4A0B-4B35-A612-4CF45FD6411E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukt.LeetCode", "src\Sukt.LeetCode\Sukt.LeetCode.csproj", "{7E910742-53B1-43F2-9923-CEB2871AA4E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{915C0752-4A0B-4B35-A612-4CF45FD6411E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{915C0752-4A0B-4B35-A612-4CF45FD6411E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{915C0752-4A0B-4B35-A612-4CF45FD6411E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E910742-53B1-43F2-9923-CEB2871AA4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E910742-53B1-43F2-9923-CEB2871AA4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E910742-53B1-43F2-9923-CEB2871AA4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E910742-53B1-43F2-9923-CEB2871AA4E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
