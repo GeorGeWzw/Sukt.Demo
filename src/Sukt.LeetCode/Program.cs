@@ -12,30 +12,15 @@ namespace Sukt.LeetCode
             Console.WriteLine($"不使用+或-求两数之和{ LeetCodeSimple.GetSum(2, 3)}");
             Console.WriteLine($"该数组中找出 和为目标值 target  的那 两个 整数----->下标是：{string.Join(",", LeetCodeSimple.TwoSum(new int[] { 2, 7, 11, 15 }, 26))}");
             Console.WriteLine($"给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。----->答案是：{string.Join(",", LeetCodeSimple.IsPalindrome(121))}");
-            FizzBuzz(15);
+            LeetCodeSimple.FizzBuzz(15);
+            LeetCodeSimple.PeakIndexInMountainArray(new int[] { 2, 7, 45, 45, 89, 656, 64656, 7777, 12 });
+            Console.WriteLine($"最小操作次数使数组元素相等---->{LeetCodeSimple.MinMoves(new int[] { 1, 1, 1 })}");
+            Console.WriteLine($"{ string.Join(" ,", LeetCodeSimple.PlusOne(new int[] {4,3,2,1 }))}");
+
+            
+
+
         }
-        public static IList<string> FizzBuzz(int n)
-        {
-            string[] arr = new string[n];
-            for (int i = 1; i <= n; i++)
-            {
-                if (i % 3 == 0 && i % 5 == 0)
-                {
-                    arr[i - 1] = "FizzBuzz";
-                }
-                else if (i % 3 == 0)
-                {
-                    arr[i - 1] = "Fizz";
-                }
-                else if (i % 5 == 0)
-                {
-                    arr[i - 1] = "Buzz";
-                }
-                else { 
-                    arr[i - 1] = i.ToString();
-                }
-            }
-            return arr;
-        }
+        
     }
 }

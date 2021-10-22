@@ -112,5 +112,97 @@ namespace Sukt.LeetCode
             }
             return x == revertedNumber || x == revertedNumber / 10;
         }
-     }
+        /// <summary>
+        /// 判断一个数组中的数值是否能被3\5和3、5整除
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static IList<string> FizzBuzz(int n)
+        {
+            string[] arr = new string[n];
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 3 == 0 && i % 5 == 0)
+                {
+                    arr[i - 1] = "FizzBuzz";
+                }
+                else if (i % 3 == 0)
+                {
+                    arr[i - 1] = "Fizz";
+                }
+                else if (i % 5 == 0)
+                {
+                    arr[i - 1] = "Buzz";
+                }
+                else
+                {
+                    arr[i - 1] = i.ToString();
+                }
+            }
+            return arr;
+        }
+        /// <summary>
+        /// 山脉数组的顶部
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static int PeakIndexInMountainArray(int[] arr)
+        {
+            int n = arr.Length;
+            int left = 1, right = n - 2, ans = 0;
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                if (arr[mid] > arr[mid + 1])
+                {
+                    ans = mid;
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+            return ans;
+        }
+        /// <summary>
+        /// 最小操作次数使数组元素相等
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int MinMoves(int[] nums)
+        {
+            var result=0;
+            var minNum=nums.Min();
+            foreach (var item in nums)
+            {
+                result += item - minNum;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 加一 
+        /// </summary>
+        /// <param name="digits"></param>
+        /// <returns></returns>
+        public static int[] PlusOne(int[] digits)
+        {
+            for (int i = digits.Length-1; i >= 0; i--)
+            {
+                if(digits[i]!=9)
+                {
+                    digits[i]++;
+                    return digits;
+                }
+                digits[i] = 0;
+            }
+            int[] result = new int[digits.Length+1];
+            result[0] = 1;
+            return result;
+        }
+        public IList<int> MajorityElement(int[] nums)
+        {
+
+        }
+    }
 }
