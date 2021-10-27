@@ -200,9 +200,79 @@ namespace Sukt.LeetCode
             result[0] = 1;
             return result;
         }
-        public IList<int> MajorityElement(int[] nums)
+        public static IList<int> MajorityElement(int[] nums)
         {
+            return nums.GroupBy(x => x).Where(x => x.Count() > nums.Length / 3).Select(x => x.Key).ToList();
+        }
+        /// <summary>
+        /// 搜索二维矩阵 II
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static bool SearchMatrix(int[][] matrix, int target)
+        {
+            int m = matrix.Length, n = matrix[0].Length;
+            int x = 0, y = n - 1;
+            while (x < m && y >= 0)
+            {
+                if (matrix[x][y] == target)
+                {
+                    return true;
+                }
+                if (matrix[x][y] > target)
+                {
+                    --y;
+                }
+                else
+                {
+                    ++x;
+                }
+            }
+            return false;
+        }
+        public static int[] NextGreaterElement(int[] nums1, int[] nums2)
+        {
+            //int x = nums1.Length, y = nums2.Length;
+            //int[] result = new int[x];
+            //for (int i = 0; i < x; i++)
+            //{
 
+            //    int n = 0;
+            //    while (n<y&& nums2[n]!=nums1[i])
+            //    {
+            //        n++;
+            //    }
+            //    int m = n + 1;
+            //    while (m<y&& nums2[m]<nums2[n])
+            //    {
+            //        ++m;
+            //    }
+            //    result[i]=m<y?nums2[m]:-1;
+
+            //}
+
+            //return result;
+
+
+            Dictionary<int, int> dictionary = new Dictionary<int, int>();
+            Stack<int> stack = new Stack<int>();
+            for (int i = nums2.Length - 1; i >= 0; --i)
+            {
+                int num = nums2[i];
+                while (stack.Count > 0 && num >= stack.Peek())
+                {
+                    stack.Pop();
+                }
+                dictionary.Add(num, stack.Count > 0 ? stack.Peek() : -1);
+                stack.Push(num);
+            }
+            int[] res = new int[nums1.Length];
+            for (int i = 0; i < nums1.Length; ++i)
+            {
+                res[i] = dictionary[nums1[i]];
+            }
+            return res;
         }
     }
 }
