@@ -274,5 +274,23 @@ namespace Sukt.LeetCode
             }
             return res;
         }
+
+        public static int FindPoisonedDuration(int[] timeSeries, int duration)
+        {
+            int resultsum = 0;
+            var len = timeSeries.Length;
+            for (int i = 1; i < len; i++)
+            {
+                if(timeSeries[i]>=timeSeries[i-1]+duration)
+                {
+                    resultsum =resultsum + duration;
+                }
+                else
+                {
+                    resultsum = resultsum + (timeSeries[i] - timeSeries[i - 1]);
+                }
+            }
+            return resultsum+duration;
+        }
     }
 }

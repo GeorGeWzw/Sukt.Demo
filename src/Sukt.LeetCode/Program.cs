@@ -17,7 +17,8 @@ namespace Sukt.LeetCode
             Console.WriteLine($"最小操作次数使数组元素相等---->{LeetCodeSimple.MinMoves(new int[] { 1, 1, 1 })}");
             Console.WriteLine($"{ string.Join(" ,", LeetCodeSimple.PlusOne(new int[] {4,3,2,1 }))}");
             Console.WriteLine(LeetCodeSimple.NextGreaterElement(new int[] { 4, 1, 2}, new int[] { 1, 3, 4, 2 }));
-            
+            Console.WriteLine($"{LeetCodeSimple.FindPoisonedDuration(new int[] { 1, 2},2)}");
+            Console.ReadLine();
 
 
         }
